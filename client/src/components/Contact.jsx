@@ -20,6 +20,9 @@ function Contact() {
           <a href="">
             <i className="fa-brands fa-instagram"></i>
           </a>
+          <a href="">
+          <i className="fa-brands fa-x-twitter"></i>
+          </a>
         </div>
       </div>
     </ContactContainer>
@@ -50,6 +53,10 @@ const ContactContainer = styled.div`
         width: 40px;
         font-size: 30px;
         color: var(--primary-text-color);
+      }
+      i:hover{
+        color: var(--accent-color-1);
+        transition: all .2s linear;
       }
     }
   }

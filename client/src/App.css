@@ -1,6 +1,7 @@
 
 :root {
-  --background-color : #03045e;
+  /* --background-color : #03045e; */
+  --background-color: black;
   --primary-text-color: #caf0f8;
   --secondary-text-color:#03045e;
   --accent-color-1: #0077b6;
@@ -68,4 +69,7 @@
   left: 0;
   bottom: -10px;
   background-color: var(--accent-color-1);
+}
+.highlight-text{
+  color: var(--accent-color-2);
 }

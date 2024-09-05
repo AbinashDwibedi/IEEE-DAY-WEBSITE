@@ -26,7 +26,7 @@ const competitionSchema = new Schema({
         required: true
     },
     competition:{
-        type : String,
+        type : [String],
         required :true
     }
 },{timestamps: true})

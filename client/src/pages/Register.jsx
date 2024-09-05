@@ -47,7 +47,7 @@ function Register() {
         department: "",
         college: ""
       });
-      const {data} =await axios.post("http://localhost:3000/api/competitions/register",{
+      const {data} =await axios.post("http://ieee-day-website.vercel.app/api/competitions/register",{
         fullname: regData.fullname,
         email: regData.email,
         mob : regData.mob,

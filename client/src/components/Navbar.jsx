@@ -14,8 +14,8 @@ function Navbar() {
         <div className="menu" onClick={(e)=>handleMenu(e)}><i className="fa-solid fa-bars"></i></div>
         <ul className="navbar-lists" ref={ulRef}>
             <li className="navbar-list"><a href="#HOME">Home</a></li>
-            <li className="navbar-list"><a href="#ABOUT">About</a></li>
             <li className="navbar-list"><a href="#COMPETITIONS">Competitions</a></li>
+            <li className="navbar-list"><a href="#ABOUT">About</a></li>
             <li className="navbar-list"><a href="#CONTACT">Contact</a></li>
         </ul>
     </nav>

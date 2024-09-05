@@ -6,7 +6,7 @@ function Hero() {
     <HeroContainer id="HOME">
       <div className="right-hero">
         <h1 className="hero-heading-1">
-          <span>IEEE Day: </span> Celebrating the Power of Technology and Innovation
+          <span className="highlight-text">IEEE Day: </span> Celebrating the Power of Technology and Innovation
         </h1>
         {/* <h2 className="hero-heading-2">Lorem ipsum dolor sit amet.</h2> */}
         <p className="hero-para">
@@ -27,16 +27,16 @@ const HeroContainer = styled.div`
   display: flex;
   font-size: 10px;
   min-height: 100vh;
-  padding: 65px 20px 0;
+  padding: 65px 20px 30px;
   .right-hero {
     min-width: 60%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: start;
-    h1 span {
+    /* h1 span {
       color: var(--accent-color-1);
-    }
+    } */
     h1{
         font-size: 4.5em;
         font-weight: 900;

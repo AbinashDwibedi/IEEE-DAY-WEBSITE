@@ -5,7 +5,7 @@ const app = express();
 
 const allowedOrigins = [
     "https://ieee-day-vssut.web.app",
-    "http://localhost:3001"
+    "http://localhost:5173"
   ];
   
   app.use(cors({

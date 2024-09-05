@@ -6,19 +6,60 @@ const registerCompetitor = async(req, res, next)=>{
     try {
         const {fullname , email , mob ,competition , college , department} = req.body;
         const findCompetitor = await Competition.findOne({
-            $or :[
+            $and:[
+                {competition},
+                {$or : [
                 {mob},
-                {email}
+                {email},
+                ]}
             ]
         });
         if(findCompetitor){
             res.json(new ApiResponse(
                 false,
                 null,
-                "User Already exists"
+                "Already Registered"
             ))
         }
         else{
+            const findUser = await Competition.findOne({
+                $and : [
+                    {
+                        $or : [
+                            {mob},
+                            {email}
+                        ]
+                    },
+                    {
+                        competition :{$nin : [competition]}
+                    },
+                    // {
+                    //     department : {$in : department}
+                    // }
+                ]
+            })
+           if(findUser){
+                const update = await Competition.findByIdAndUpdate({
+                    _id : findUser._id
+                },{
+                    $push: {competition : competition}
+                },{new: true})
+                if(!update){
+                    res.json(new ApiResponse(
+                        false,
+                        null,
+                        "try again"
+                    ))
+                }
+                else{
+                    res.json(new ApiResponse(
+                        true,
+                        null,
+                        "New competition added"
+                    ))
+                }
+           }
+           else{
             const createCompetitor = await Competition.create({
                 fullname,
                 email,
@@ -41,6 +82,7 @@ const registerCompetitor = async(req, res, next)=>{
                     "Registered successfully"
                 ))
             }
+           }
         }
         
     } catch (error) {

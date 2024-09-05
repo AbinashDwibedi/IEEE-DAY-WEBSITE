@@ -5,7 +5,7 @@ function About() {
     <>
         <AboutContainer id='ABOUT'>
             <h1 className="universal-heading">About</h1>
-            <p><span><i className="fa-solid fa-quote-left"> </i></span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat tempore odio voluptate sed eligendi! Vero corporis culpa dignissimos praesentium rem natus a quo harum! Aliquam laborum eum facere optio nihil laboriosam vero, delectus consequatur? Eligendi totam laboriosam odio vero. Voluptatibus, explicabo ipsum vel a asperiores quos possimus omnis iste aliquid.</p>
+            <p><span><i className="fa-solid fa-quote-left"> </i></span>The <span className="highlight-text">IEEE VSSUT STUDENT BRANCH BURLA</span> Got The Petition For Its Approval To Establish On 6th November 2018.It Was Then Inaugurated On 14th February 2019 By Prof. T.Srinivas From IISC, Bangalore In The Presence Of Hon'ble Vice Chancellor Of VSSUT, Burla, Prof. Atal Chaudhuri, The IEEE Branch Councilor, Dr. Harish Kumar Sahoo And The Faculty Advisor Dr. Papia Ray. By March It Became The Largest Group With Faculty Members And Students From Electrical, Electronic And Computer Science Branch. Presently It Is Actively Running With 80 Members And 20 Office Bearers.</p>
         </AboutContainer>
     </>
   )
@@ -18,6 +18,7 @@ padding:0 20px;
         span{
             font-size: 30px;
         }
+        font-weight:500;
         font-size: 20px;
         padding: 10px;
         /* background-color: var(--accent-color-1); */

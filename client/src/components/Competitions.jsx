@@ -29,7 +29,10 @@ function Competitions() {
   }
   return (
     <>
-      <CompetitionsContainer className="competitions-container" id="COMPETITIONS">
+      <CompetitionsContainer
+        className="competitions-container"
+        id="COMPETITIONS"
+      >
         <h1 className="universal-heading">Competitions</h1>
         <div className="competitions">
           {competitions.map((competition, index) => {
@@ -98,14 +101,18 @@ const CompetitionsContainer = styled.div`
       }
     }
   }
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 600px) {
     margin: 0 10px;
-    .competitions{
+    .competitions {
       grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  }
-  .competition{
-    gap: 10px;
-  }
-
+      .competition {
+        flex-direction: column;
+        gap: 10px;
+        div,
+        img {
+          width: 100%;
+        }
+      }
+    }
   }
 `;
