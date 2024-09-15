@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import heroImg from "../assets/11215244_4689579.svg";
+import heroImg from "../assets/IEEE-Day.svg";
 function Hero() {
   return (
     <HeroContainer id="HOME">

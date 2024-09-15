@@ -7,8 +7,8 @@ function Contact() {
       <h1 className="universal-heading">contact</h1>
       <div className="contact-no">
         <ul>
-          <li>name : 000000000</li>
-          <li>name : 000000000</li>
+          <li>Shirish Kumar Mishra : 8249824678</li>
+          <li>Debabrata Sahoo : 9560900718</li>
         </ul>
         <div className="social-links">
           <a href="">

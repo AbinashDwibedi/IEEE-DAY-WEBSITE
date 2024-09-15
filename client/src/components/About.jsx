@@ -19,8 +19,9 @@ padding:0 20px;
             font-size: 30px;
         }
         font-weight:500;
-        font-size: 20px;
+        font-size: 18px;
         padding: 10px;
+        line-height: 30px;
         /* background-color: var(--accent-color-1); */
         /* border-radius: 10px; */
     }

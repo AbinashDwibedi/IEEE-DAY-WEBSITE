@@ -60,6 +60,7 @@ export default Competitions;
 
 const CompetitionsContainer = styled.div`
   margin: 0 20px;
+  
   .competitions {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
@@ -70,6 +71,11 @@ const CompetitionsContainer = styled.div`
       border-radius: 2px 10px 2px 10px;
       display: flex;
       gap: 20px;
+
+      &:hover > img{
+          mix-blend-mode: luminosity;
+          transition: all .1s linear;
+      }
       /* background: var(--accent-color-1); */
       /* height: 400px; */
       /* border:2px solid var(--accent-color-1); */
@@ -82,8 +88,8 @@ const CompetitionsContainer = styled.div`
         button {
           margin-top: 20px;
           border: none;
-          color: var(--secondary-text-color);
-          padding: 7px;
+          color: var(--tertiary-text-color);
+          padding: 10px;
           font-size: 17px;
           border-radius: 4px;
           font-weight: 700;
@@ -98,6 +104,7 @@ const CompetitionsContainer = styled.div`
         width: 50%;
         height: auto;
         border-radius: 5px;
+        
       }
     }
   }

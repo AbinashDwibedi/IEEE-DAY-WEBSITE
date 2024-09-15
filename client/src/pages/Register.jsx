@@ -4,14 +4,16 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import axios from "axios"
+import loaderGif from "../assets/Spinner.gif"
+import axios from "axios";
 function Register() {
   const nameRegex = /^[a-zA-Z\s'-]{3,40}$/;
   const emailRegex = /^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,6}$/;
   const phoneRegex = /^[6-9]\d{9}$/;
 
   const navigate = useNavigate();
-  const { setResistrationResponse} = useContext(competitionResistrationStatus)
+  const { setResistrationResponse } = useContext(competitionResistrationStatus);
+  const [isLoaded, setisLoaded] = useState(true)
   const options = {
     position: "top-right",
     autoClose: 5000,
@@ -30,7 +32,7 @@ function Register() {
     email: "",
     mob: "",
     department: "",
-    college:""
+    college: "",
   });
   useEffect(() => {
     if (Object.keys(details).length == 0) {
@@ -38,28 +40,34 @@ function Register() {
     }
   }, []);
   async function handleSubmit(e) {
+    
     e.preventDefault();
     if (checkFields()) {
+      setisLoaded(false);
       setRegData({
         fullname: "",
         email: "",
         mob: "",
         department: "",
-        college: ""
+        college: "",
       });
-      const {data} =await axios.post("http://ieee-day-website.vercel.app/api/competitions/register",{
-        fullname: regData.fullname,
-        email: regData.email,
-        mob : regData.mob,
-        department : regData.department,
-        college : regData.college,
-        competition : details.title,
-      })
+      const { data } = await axios.post(
+        "https://ieee-day-website.vercel.app/api/competitions/register",
+        {
+          fullname: regData.fullname,
+          email: regData.email,
+          mob: regData.mob,
+          department: regData.department,
+          college: regData.college,
+          competition: details.title,
+        }
+      );
       await setResistrationResponse(data);
-      navigate("/status")
+      setisLoaded(true);
+      navigate("/status");
     }
   }
-  
+
   function checkFields() {
     if (regData.fullname.length < 3) {
       toast.error("name must be above three letters", options);
@@ -125,7 +133,7 @@ function Register() {
               />
             </div>
             <div>
-            <i className="fas fa-university"></i>
+              <i className="fas fa-university"></i>
               <input
                 placeholder="Enter your college name"
                 type="text"
@@ -146,9 +154,7 @@ function Register() {
                 value={regData.department}
                 onChange={(e) => handleChange(e)}
               >
-                <option value="">
-                  select branch
-                </option>
+                <option value="">select branch</option>
                 <option value="Electronics and Telecommunication Engineering">
                   Electronics and Telecommunication Engineering
                 </option>
@@ -170,7 +176,7 @@ function Register() {
                 </option>
               </select>
             </div>
-            <button type="submit">Register Now</button>
+            {isLoaded ? <button type="submit">Register Now</button> : <div className="loader"><img src={loaderGif} alt="" /></div>}
           </form>
         </div>
       </RegisterContainer>
@@ -181,7 +187,7 @@ function Register() {
 
 export default Register;
 const RegisterContainer = styled.div`
-padding: 30px 20px;
+  padding: 30px 20px;
   min-height: 100vh;
   /* padding: 0 20px; */
   width: 100%;
@@ -213,15 +219,15 @@ padding: 30px 20px;
       div {
         display: flex;
         justify-content: space-between;
-        background: white;
+        /* background: white; */
         padding: 8px 10px;
-        gap: 5px;
+        gap: 10px;
         border-radius: 10px;
         i {
           font-size: 20px;
           color: var(--secondary-text-color);
           height: 40px;
-          width: 40px;
+          width: 45px;
           text-align: center;
           line-height: 40px;
           background: var(--primary-text-color);
@@ -231,15 +237,25 @@ padding: 30px 20px;
         select {
           width: 100%;
           /* background-color: cyan; */
+          color: var(--primary-text-color);
           height: 40px;
           font-size: 16px;
           font-weight: 600;
           padding-left: 5px;
           outline: none;
-          border: 2px solid var(--primary-text-color);
-          border-radius: 10px;
+          background: transparent;
+          /* border: 2px solid var(--primary-text-color); */
+          border: none;
+          border-bottom: 3px solid var(--accent-color-1);
+          /* border-radius: 10px; */
+          &::placeholder{
+            padding-left: 5px;
+          }
+          &:focus{
+            border-bottom: 3px solid var(--accent-color-2);
+          }
         }
-        
+
         select {
           color: #757794;
           cursor: pointer;
@@ -265,6 +281,22 @@ padding: 30px 20px;
           transition: all 0.1s linear;
         }
       }
+      .loader {
+        padding: 7px;
+    border-radius: 25px;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    position: relative;
+    transition: all 0.1s linear;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+        img{
+          height: 26px;
+    scale: 1.8;
+        }
     }
   }
 `;
