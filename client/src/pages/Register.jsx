@@ -4,7 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import loaderGif from "../assets/Spinner.gif"
+import loaderGif from "../assets/Spinner.gif";
 import axios from "axios";
 function Register() {
   const nameRegex = /^[a-zA-Z\s'-]{3,40}$/;
@@ -13,7 +13,7 @@ function Register() {
 
   const navigate = useNavigate();
   const { setResistrationResponse } = useContext(competitionResistrationStatus);
-  const [isLoaded, setisLoaded] = useState(true)
+  const [isLoaded, setisLoaded] = useState(true);
   const options = {
     position: "top-right",
     autoClose: 5000,
@@ -33,6 +33,13 @@ function Register() {
     mob: "",
     department: "",
     college: "",
+
+    whatsappNo: "",
+    instagramId: "",
+    yearOfPassout: "",
+    collegeId: "",
+    degree: "",
+    ieeeDayExpectation: "",
   });
   useEffect(() => {
     if (Object.keys(details).length == 0) {
@@ -40,7 +47,6 @@ function Register() {
     }
   }, []);
   async function handleSubmit(e) {
-    
     e.preventDefault();
     if (checkFields()) {
       setisLoaded(false);
@@ -50,9 +56,16 @@ function Register() {
         mob: "",
         department: "",
         college: "",
+        whatsappNo: "",
+        instagramId: "",
+        yearOfPassout: "",
+        collegeId: "",
+        degree: "",
+        ieeeDayExpectation: "",
       });
       const { data } = await axios.post(
-        "https://ieee-day-website.vercel.app/api/competitions/register",
+        // "https://ieee-day-website.vercel.app/api/competitions/register",
+        "http://localhost:3001/api/competitions/register",
         {
           fullname: regData.fullname,
           email: regData.email,
@@ -60,6 +73,12 @@ function Register() {
           department: regData.department,
           college: regData.college,
           competition: details.title,
+          whatsappNo: regData.whatsappNo,
+          instagramId: regData.instagramId,
+          yearOfPassout: regData.yearOfPassout,
+          collegeId: regData.collegeId,
+          degree: regData.degree,
+          ieeeDayExpectation:regData.ieeeDayExpectation,
         }
       );
       await setResistrationResponse(data);
@@ -83,6 +102,24 @@ function Register() {
     } else if (!phoneRegex.test(regData.mob)) {
       toast.error("enter a valid mobile number", options);
       return false;
+    } else if (!phoneRegex.test(regData.whatsappNo)) {
+      toast.error("enter a valid whatsapp number", options);
+      return false;
+    } else if (regData.college.length < 5) {
+      toast.error("invalid college name", options);
+      return false;
+    } else if (regData.collegeId.length < 5) {
+      toast.error("invalid college id", options);
+      return false;
+    } else if (regData.yearOfPassout.length < 4) {
+      toast.error("invalid year", options);
+      return false;
+    } else if (regData.instagramId.length < 3) {
+      toast.error("invalid instagram id", options);
+      return false;
+    } else if (regData.degree.length < 2) {
+      toast.error("invalid degree name", options);
+      return false;
     } else {
       return true;
     }
@@ -103,7 +140,7 @@ function Register() {
         <div className="competition-form">
           <form id="registerForm" action="" onSubmit={(e) => handleSubmit(e)}>
             <div>
-              <i className="fa-solid fa-user"></i>
+              {/* <i className="fa-solid fa-user"></i> */}
               <input
                 type="text"
                 placeholder="Enter your name"
@@ -113,7 +150,7 @@ function Register() {
               />
             </div>
             <div>
-              <i className="fa-solid fa-envelope"></i>
+              {/* <i className="fa-solid fa-envelope"></i> */}
               <input
                 placeholder="Enter your email"
                 type="text"
@@ -122,17 +159,35 @@ function Register() {
                 onChange={(e) => handleChange(e)}
               />
             </div>
-            <div>
+            {/* <div>
               <i className="fa-solid fa-mobile"></i>
               <input
-                placeholder="Enter your mobile number"
+                placeholder="mobile number"
                 type="tel"
                 name="mob"
                 value={regData.mob}
                 onChange={(e) => handleChange(e)}
               />
-            </div>
+            </div> */}
             <div>
+              {/* <i class="fa-brands fa-whatsapp"></i> */}
+              <input
+                placeholder="mobile number"
+                type="tel"
+                name="mob"
+                value={regData.mob}
+                onChange={(e) => handleChange(e)}
+              />
+              <input
+                placeholder="Whatsapp number"
+                type="tel"
+                name="whatsappNo"
+                value={regData.whatsappNo}
+                onChange={(e) => handleChange(e)}
+              />
+            </div>
+
+            {/* <div>
               <i className="fas fa-university"></i>
               <input
                 placeholder="Enter your college name"
@@ -141,12 +196,77 @@ function Register() {
                 value={regData.college}
                 onChange={(e) => handleChange(e)}
               />
+            </div> */}
+            <div>
+              {/* <i class="fa-brands fa-whatsapp"></i> */}
+              <input
+                placeholder="college name"
+                type="text"
+                name="college"
+                value={regData.college}
+                onChange={(e) => handleChange(e)}
+              />
+              <input
+                placeholder="college Id"
+                type="tel"
+                name="collegeId"
+                value={regData.collegeId}
+                onChange={(e) => handleChange(e)}
+              />
+            </div>
+
+            <div>
+              {/* <i class="fa-brands fa-whatsapp"></i> */}
+              <input
+                placeholder="Passout Year"
+                type="tel"
+                name="yearOfPassout"
+                value={regData.yearOfPassout}
+                onChange={(e) => handleChange(e)}
+              />
+              <input
+                placeholder="Branch"
+                type="text"
+                name="department"
+                id=""
+                value={regData.department}
+                onChange={(e) => handleChange(e)}
+              />
+            </div>
+
+            <div>
+              {/* <i class="fa-brands fa-instagram"></i> */}
+              <input
+                placeholder="instagram Id"
+                type="tel"
+                name="instagramId"
+                value={regData.instagramId}
+                onChange={(e) => handleChange(e)}
+              />
+              {/* <input type="text" disabled value={details.title} /> */}
+              <input
+                type="text"
+                placeholder="Degree"
+                name="degree"
+                value={regData.degree}
+                onChange={(e) => handleChange(e)}
+              />
             </div>
             <div>
+              <textarea
+                rows={4}
+                name="ieeeDayExpectation"
+                id=""
+                value={regData.ieeeDayExpectation}
+                placeholder="What do you expect from IEEE Day..."
+                onChange={(e) => handleChange(e)}
+              ></textarea>
+            </div>
+            {/* <div>
               <i className="fa-solid fa-list"></i>
               <input type="text" disabled value={details.title} />
-            </div>
-            <div>
+            </div> */}
+            {/* <div>
               <i className="fa-solid fa-list"></i>
               <select
                 name="department"
@@ -158,25 +278,17 @@ function Register() {
                 <option value="Electronics and Telecommunication Engineering">
                   Electronics and Telecommunication Engineering
                 </option>
-                <option value="computer science and engineering">
-                  computer science and engineering
-                </option>
-                <option value="electrical engineering">
-                  electrical engineering
-                </option>
-                <option value="metallurgical and material engineering">
-                  metallurgical and material engineering
-                </option>
-                <option value="information technology">
-                  information technology
-                </option>
-                <option value="civil engineering">civil engineering</option>
-                <option value="mechanical engineering">
-                  mechanical engineering
-                </option>
-              </select>
-            </div>
-            {isLoaded ? <button type="submit">Register Now</button> : <div className="loader"><img src={loaderGif} alt="" /></div>}
+                
+              </select> 
+              <input placeholder="Enter your branch" type="text" name="department" id="" value={regData.department} onChange={(e)=> handleChange(e)}/>
+            </div> */}
+            {isLoaded ? (
+              <button type="submit">Register Now</button>
+            ) : (
+              <div className="loader">
+                <img src={loaderGif} alt="" />
+              </div>
+            )}
           </form>
         </div>
       </RegisterContainer>
@@ -223,6 +335,19 @@ const RegisterContainer = styled.div`
         padding: 8px 10px;
         gap: 10px;
         border-radius: 10px;
+        textarea {
+          resize: none;
+          outline: none;
+          width: 100%;
+          background: transparent;
+          border: 2px solid var(--primary-text-color);
+          border: none;
+          border: 3px solid var(--accent-color-1);
+          font-size: 16px;
+          font-weight: 600;
+          padding: 10px;
+          border-radius: 5px;
+        }
         i {
           font-size: 20px;
           color: var(--secondary-text-color);
@@ -248,10 +373,10 @@ const RegisterContainer = styled.div`
           border: none;
           border-bottom: 3px solid var(--accent-color-1);
           /* border-radius: 10px; */
-          &::placeholder{
+          &::placeholder {
             padding-left: 5px;
           }
-          &:focus{
+          &:focus {
             border-bottom: 3px solid var(--accent-color-2);
           }
         }
@@ -266,7 +391,7 @@ const RegisterContainer = styled.div`
         }
       }
       button {
-        color: var(--secondary-text-color);
+        color: var(--accent-color-1);
         font-size: 20px;
         padding: 7px;
         border-radius: 25px;
@@ -283,20 +408,21 @@ const RegisterContainer = styled.div`
       }
       .loader {
         padding: 7px;
-    border-radius: 25px;
-    border: none;
-    cursor: pointer;
-    font-weight: 700;
-    position: relative;
-    transition: all 0.1s linear;
-    background: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-        img{
+        border-radius: 25px;
+        border: none;
+        cursor: pointer;
+        font-weight: 700;
+        position: relative;
+        transition: all 0.1s linear;
+        background: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        img {
           height: 26px;
-    scale: 1.8;
+          scale: 1.8;
         }
+      }
     }
   }
 `;

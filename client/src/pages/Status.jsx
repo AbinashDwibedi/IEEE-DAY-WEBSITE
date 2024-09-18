@@ -14,7 +14,8 @@ function Status() {
   return (
     <StatusContainer>
         <h1>{resistrationResponse.message} !</h1>
-        {!resistrationResponse.status && <button onClick={()=> navigate("/")}>goto homepage</button>}
+        {/* {!resistrationResponse.status && <button onClick={()=> navigate("/")}>goto homepage</button>} */}
+        <button onClick={()=> navigate("/")}>goto homepage</button>
     </StatusContainer>
   )
 }
