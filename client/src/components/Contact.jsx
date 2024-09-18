@@ -7,7 +7,7 @@ function Contact() {
       <h1 className="universal-heading">contact</h1>
       <div className="contact-no">
         <ul>
-          <li>Shirish Kumar Mishra : 8249824678</li>
+          <li>Shubhranshu Sekhar Panda : 6372739018</li>
           <li>Debabrata Sahoo : 9560900718</li>
         </ul>
         <div className="social-links">
@@ -42,6 +42,7 @@ const ContactContainer = styled.div`
     ul {
       font-weight: 300;
       font-size: 20px;
+      text-align: center;
     }
     .social-links {
       display: flex;

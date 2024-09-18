@@ -12,7 +12,7 @@ function Home() {
     <Competitions/>
     <About/>
     <Contact/>
-    <div className="copyright" style={{width: "100%", font:"20px", padding:"5px", textAlign:"center", backgroundColor:"var(--accent-color-1)"}}>&copy; IEEE v.s.s.u.t. student branch</div>
+    <div className="copyright" style={{width: "100%", font:"20px", padding:"5px", textAlign:"center", backgroundColor:"var(--accent-color-1)"}}>&copy; IEEE VSSUT Student Branch</div>
     </>
   )
 }
