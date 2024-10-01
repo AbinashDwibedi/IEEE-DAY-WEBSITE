@@ -5,12 +5,14 @@ import "react-toastify/dist/ReactToastify.css";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import loaderGif from "../assets/Spinner.gif";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 import axios from "axios";
 function Register() {
   const nameRegex = /^[a-zA-Z\s'-]{3,40}$/;
   const emailRegex = /^[\w.-]+@[a-zA-Z\d.-]+\.[a-zA-Z]{2,6}$/;
   const phoneRegex = /^[6-9]\d{9}$/;
-
+  
   const navigate = useNavigate();
   const { setResistrationResponse } = useContext(competitionResistrationStatus);
   const [isLoaded, setisLoaded] = useState(true);
@@ -35,7 +37,7 @@ function Register() {
     college: "",
 
     whatsappNo: "",
-    instagramId: "",
+    instagramId: "no instaid",
     yearOfPassout: "",
     collegeId: "",
     degree: "",
@@ -46,6 +48,16 @@ function Register() {
       navigate("/");
     }
   }, []);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  useGSAP(()=>{
+    gsap.from(".register-container", {
+      opacity: 0,
+      y: -50,
+      duration: 1,
+    })
+  },[])
   async function handleSubmit(e) {
     e.preventDefault();
     if (checkFields()) {
@@ -64,8 +76,8 @@ function Register() {
         ieeeDayExpectation: "",
       });
       const { data } = await axios.post(
-        // "https://ieee-day-website.vercel.app/api/competitions/register",
-        "http://localhost:3001/api/competitions/register",
+        "https://ieee-day-website.vercel.app/api/competitions/register",
+        // "http://localhost:3001/api/competitions/register",
         {
           fullname: regData.fullname,
           email: regData.email,
@@ -114,10 +126,7 @@ function Register() {
     } else if (regData.yearOfPassout.length < 4) {
       toast.error("invalid year", options);
       return false;
-    } else if (regData.instagramId.length < 3) {
-      toast.error("invalid instagram id", options);
-      return false;
-    } else if (regData.degree.length < 2) {
+    }  else if (regData.degree.length < 2) {
       toast.error("invalid degree name", options);
       return false;
     } else {
@@ -143,7 +152,7 @@ function Register() {
               {/* <i className="fa-solid fa-user"></i> */}
               <input
                 type="text"
-                placeholder="Enter your name"
+                placeholder="Enter Your Name"
                 name="fullname"
                 value={regData.fullname}
                 onChange={(e) => handleChange(e)}
@@ -152,7 +161,7 @@ function Register() {
             <div>
               {/* <i className="fa-solid fa-envelope"></i> */}
               <input
-                placeholder="Enter your email"
+                placeholder="Enter Your Email"
                 type="text"
                 name="email"
                 value={regData.email}
@@ -172,14 +181,14 @@ function Register() {
             <div>
               {/* <i class="fa-brands fa-whatsapp"></i> */}
               <input
-                placeholder="mobile number"
+                placeholder="Mobile Number"
                 type="tel"
                 name="mob"
                 value={regData.mob}
                 onChange={(e) => handleChange(e)}
               />
               <input
-                placeholder="Whatsapp number"
+                placeholder="Whatsapp Number"
                 type="tel"
                 name="whatsappNo"
                 value={regData.whatsappNo}
@@ -200,14 +209,14 @@ function Register() {
             <div>
               {/* <i class="fa-brands fa-whatsapp"></i> */}
               <input
-                placeholder="college name"
+                placeholder="College Name"
                 type="text"
                 name="college"
                 value={regData.college}
                 onChange={(e) => handleChange(e)}
               />
               <input
-                placeholder="college Id"
+                placeholder="College Id"
                 type="tel"
                 name="collegeId"
                 value={regData.collegeId}
@@ -224,31 +233,40 @@ function Register() {
                 value={regData.yearOfPassout}
                 onChange={(e) => handleChange(e)}
               />
-              <input
+              {/* <input
                 placeholder="Branch"
                 type="text"
                 name="department"
                 id=""
                 value={regData.department}
                 onChange={(e) => handleChange(e)}
-              />
-            </div>
-
-            <div>
-              {/* <i class="fa-brands fa-instagram"></i> */}
-              <input
-                placeholder="instagram Id"
-                type="tel"
-                name="instagramId"
-                value={regData.instagramId}
-                onChange={(e) => handleChange(e)}
-              />
-              {/* <input type="text" disabled value={details.title} /> */}
+              /> */}
               <input
                 type="text"
                 placeholder="Degree"
                 name="degree"
                 value={regData.degree}
+                onChange={(e) => handleChange(e)}
+              />
+            </div>
+
+            <div>
+              {/* <i class="fa-brands fa-instagram"></i> */}
+              {/* <input
+                placeholder="instagram Id"
+                type="tel"
+                name="instagramId"
+                value={regData.instagramId}
+                onChange={(e) => handleChange(e)}
+              /> */}
+              {/* <input type="text" disabled value={details.title} /> */}
+              
+              <input
+                placeholder="Branch"
+                type="text"
+                name="department"
+                id=""
+                value={regData.department}
                 onChange={(e) => handleChange(e)}
               />
             </div>
@@ -306,24 +324,26 @@ const RegisterContainer = styled.div`
   gap: 20px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  /* align-items: center; */
   .competition-details {
-    min-width: 50%;
+    width: 40%;
     img {
       width: 100%;
       border-radius: 10px;
       height: auto;
+      /* height: 55vh; */
     }
     h1 {
       margin-top: 10px;
       padding: 10px;
+      color: var(--accent-color-2);
     }
     p {
       padding: 0 10px;
     }
   }
   .competition-form {
-    width: 100%;
+    width: 60%;
     form {
       display: flex;
       flex-direction: column;
@@ -366,7 +386,7 @@ const RegisterContainer = styled.div`
           height: 40px;
           font-size: 16px;
           font-weight: 600;
-          padding-left: 5px;
+          /* padding-left: 5px; */
           outline: none;
           background: transparent;
           /* border: 2px solid var(--primary-text-color); */
@@ -374,7 +394,7 @@ const RegisterContainer = styled.div`
           border-bottom: 3px solid var(--accent-color-1);
           /* border-radius: 10px; */
           &::placeholder {
-            padding-left: 5px;
+            /* padding-left: 5px; */
           }
           &:focus {
             border-bottom: 3px solid var(--accent-color-2);
@@ -425,4 +445,15 @@ const RegisterContainer = styled.div`
       }
     }
   }
+  @media screen and (max-width: 800px){
+    .competition-details{
+      width: 100%;
+      img{
+        height: 36vh;
+      }
+    }
+    .competition-form{
+      width: 100%;
+    }
+  } 
 `;

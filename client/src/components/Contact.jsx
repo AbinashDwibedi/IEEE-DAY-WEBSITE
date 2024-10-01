@@ -11,16 +11,16 @@ function Contact() {
           <li>Debabrata Sahoo : 9560900718</li>
         </ul>
         <div className="social-links">
-          <a href="">
+          {/* <a href="">
             <i className="fa-brands fa-facebook"></i>
-          </a>
-          <a href="">
+          </a> */}
+          <a href="https://www.linkedin.com/company/ieee-vssut-burla-student-branch/" target="_blank">
             <i className="fa-brands fa-linkedin"></i>
           </a>
-          <a href="">
+          <a href="https://www.instagram.com/ieeevssut/" target="_blank">
             <i className="fa-brands fa-instagram"></i>
           </a>
-          <a href="">
+          <a href="https://x.com/IEEE_VSSUT_SB" target="_blank">
           <i className="fa-brands fa-x-twitter"></i>
           </a>
         </div>
@@ -41,7 +41,7 @@ const ContactContainer = styled.div`
     gap: 20px;
     ul {
       font-weight: 300;
-      font-size: 20px;
+      font-size: 18px;
       text-align: center;
     }
     .social-links {
