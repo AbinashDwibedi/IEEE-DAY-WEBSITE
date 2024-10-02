@@ -57,23 +57,24 @@
     margin: 10px 5px;
 }
 .credit div{
-  background-color: var(--accent-color-1);
-    padding: 4px 8px;
+  padding: 4px 8px;
     border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 3px solid var(--accent-color-2);
 }
-.credit div a{
+.credit div .credit-i-a{
   font-size: 15px;
     background: black;
     /* padding: 1px 5px; */
     border-radius: 26px;
-    margin-right: 5px;
-    height: 20px;
-    width: 20px;
+    margin-right: 8px;
+    color: black;
+    height: 24px;
+    width: 24px;
     text-align: center;
-    line-height: 21px;
+    line-height: 24px;
 }
 .credit div h2{
   font-size: 15px;

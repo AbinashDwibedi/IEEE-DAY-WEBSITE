@@ -5,7 +5,7 @@ function About() {
     <>
         <AboutContainer id='ABOUT'>
             <h1 className="universal-heading">About</h1>
-            <p><span><i className="fa-solid fa-quote-left"> </i></span>The <span className="highlight-text">IEEE VSSUT STUDENT BRANCH BURLA</span> Got The Petition For Its Approval To Establish On 6th November 2018.It Was Then Inaugurated On 14th February 2019 By Prof. T.Srinivas From IISC, Bangalore In The Presence Of Hon'ble Vice Chancellor Of VSSUT, Burla, Prof. Atal Chaudhuri, The IEEE Branch Councilor, Dr. Harish Kumar Sahoo And The Faculty Advisor Dr. Papia Ray. By March It Became The Largest Group With Faculty Members And Students From Electrical, Electronic And Computer Science Branch. Presently It Is Actively Running With 80 Members And 20 Office Bearers.</p>
+            <p><span><i className="fa-solid fa-quote-left"> </i></span>The <span className="highlight-text">IEEE VSSUT STUDENT BRANCH BURLA</span>  Burla, received approval for its establishment on 6th November 2018. It was then inaugurated on 14th February 2019 by Prof. T. Srinivas from IISc, Bangalore, in the presence of the Hon’ble Vice-Chancellor of VSSUT, Burla, Prof. Atal Chaudhuri, the IEEE Branch Counselor, Dr. Harish Kumar Sahoo, and the Faculty Advisor, Dr. Papia Ray. By March, it became the largest group, including faculty members and students from the Electrical, Electronics, and Computer Science branches. Presently, it is actively operating with 80 members and 20 office bearers.</p>
         </AboutContainer>
     </>
   )
@@ -22,6 +22,7 @@ padding:0 20px;
         font-size: 18px;
         padding: 10px;
         line-height: 30px;
+        margin: 0 0 80px;
         /* background-color: var(--accent-color-1); */
         /* border-radius: 10px; */
     }

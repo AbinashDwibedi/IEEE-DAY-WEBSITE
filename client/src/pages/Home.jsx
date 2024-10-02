@@ -4,6 +4,7 @@ import Hero from '../components/Hero'
 import About from '../components/About'
 import Contact from '../components/Contact'
 import Competitions from '../components/Competitions'
+import Sponsers from '../components/Sponsers'
 import gsap from "gsap"
 import {useGSAP} from "@gsap/react"
 function Home() {
@@ -48,11 +49,13 @@ function Home() {
     <>
     <Navbar />
     <Hero/>
-    <Competitions/>
     <About/>
+    <Competitions/>
+    <Sponsers/>
     <Contact/>
     <div className="credit">
-    <div><a href="https://abinash-dwibedi.web.app/" target='_blank'><i className="fa-solid fa-globe"></i></a><h2>made by Abinash</h2></div>
+    <a href="https://abinash-dwibedi.web.app/" target='_blank'>
+    <div><div className='credit-i-a' href="https://abinash-dwibedi.web.app/" target='_blank'><i className="fa-solid fa-user"></i></div><h2>made by Abinash</h2></div></a>
     </div>
     <div className="copyright" style={{width: "100%", font:"20px", padding:"5px", textAlign:"center", backgroundColor:"var(--accent-color-1)"}}>&copy; IEEE VSSUT Student Branch</div>
     </>

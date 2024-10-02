@@ -33,7 +33,7 @@ function Competitions() {
         className="competitions-container"
         id="COMPETITIONS"
       >
-        <h1 className="universal-heading">Competitions</h1>
+        <h1 className="universal-heading">Event's</h1>
         <div className="competitions">
          <div className="competition">
                 <img src="/assets/IEEE DAY 2K24.png" alt="" />
